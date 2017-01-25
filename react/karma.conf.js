@@ -1,7 +1,4 @@
 var path = require('path');
-var webpack = require('webpack');
-
-console.log('KARMA KARMA KARMA KARMA KARMA KARMELEON!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 
 module.exports = function(config) {
   config.set({
@@ -21,13 +18,9 @@ module.exports = function(config) {
       '../node_modules/whatwg-fetch/fetch.js',
       // entry file for Webpack
       'test/testHelper.js',
-      // images for tests - RESTART THE TEST RUNNER IF YOU ADD AN IMAGE!
-      { pattern: 'test/support/images/*.png', watched: false, included: false, served: true, nocache: false }
+      // use whatwg-fetch polyfill
+      '../node_modules/whatwg-fetch/fetch.js'
     ],
-
-    proxies: {
-      '/test/support/images': '/base/test/support/images'
-    },
 
     // before serving test/testHelper.js to the browser
     preprocessors: {
@@ -67,15 +60,9 @@ module.exports = function(config) {
         ]
       },
 
-      // set NODE_ENV to test
-      plugins: [
-        new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"test"' })
-      ],
-
       // relative path starts out at the src folder when importing modules
       resolve: {
-        root: path.resolve(__dirname, 'src'),
-        extensions: ['', '.json', '.jsx', '.js']
+        root: path.resolve(__dirname, './src')
       }
     },
 
@@ -105,6 +92,7 @@ module.exports = function(config) {
       // do not print information about tests that are passing
       suppressPassed: true,
       suppressSkipped: true
+
     }
   })
 }
