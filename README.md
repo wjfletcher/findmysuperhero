@@ -3,7 +3,7 @@ Getting Started
 ``` ruby
 
 # Clone down this template
-$ git clone https://github.com/LaunchAcademy/sinatra-activerecord-starter-kit.git <YOUR_APP_NAME>
+$ git clone https://github.com/jennceng/react-rails-boilerplate.git <YOUR_APP_NAME>
 
 # Move into your app's directory
 $ cd <YOUR_APP_NAME>
