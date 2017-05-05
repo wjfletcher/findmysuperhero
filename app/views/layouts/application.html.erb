@@ -3,12 +3,17 @@
 <head>
   <title>App Title</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCgCvqPeHJ2PTAMNvp62mc6PqdZSCTiO4&libraries=places"</script>
   <%= javascript_include_tag 'application' %>
+  <script src="https://use.fontawesome.com/4617c23c08.js"></script>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
 <%= yield %>
+
 
 </body>
 </html>

@@ -1,3 +1,27 @@
 <div id="app">
   I will be replaced by react!
 </div>
+
+<h1>Need a hero? Find one near you!</h1>
+<div id="locationField">
+  <input id="autocomplete" placeholder="Enter your address" type="text"></input>
+
+  <%= form_tag '/home' do -%>
+    <%= hidden_field_tag "location" %>
+    latitude: <%= text_field_tag "latitude" %><br />
+    longitude: <%= text_field_tag "longitude"%><br />
+    distance away: <%= text_field_tag "distance", "500" %> miles<br />
+    <%= submit_tag "Search" %>
+
+  <% end -%>
+  <% if @heroesnearlocation %>
+  <h1>Heroes within <%= @distance %> miles of <%= @location %>:</h1>
+    <% @heroesnearlocation.each do |hero| %>
+      <% if hero[1].to_i.round < 25 %>
+        <h3><%= hero[0] %> is in <%= @location %>!</h3>
+      <% else %>
+        <h3><%= hero[0] %> is about <%= hero[1].to_i.round %> miles away</h3>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
